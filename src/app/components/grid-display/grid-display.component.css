@@ -1,0 +1,10 @@
+.blocks-container {
+    max-width: 600px;
+    display: flex;
+}
+
+.block-container {
+    width: 200px;
+    height: 200px;
+    border: 5px solid blue;
+}
