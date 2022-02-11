@@ -9,6 +9,8 @@ export class GridDisplayComponent implements OnInit {
 
   noOfBlocks = 9;
 
+  gridArr: ['blue', 'red', 'blue', 'green', '', '', '', '', '', ''];
+
   constructor() { }
 
   ngOnInit(): void {
