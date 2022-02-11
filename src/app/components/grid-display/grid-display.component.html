@@ -1,6 +1,10 @@
+<div *ngIf='playerWon'>
+    Red won.
+</div>
+
 <div class='blocks-container'>
-    <ng-container *ngFor='let block of [].constructor(9)'>
-        <div class="block-container"></div>
+    <ng-container *ngFor='let block of gridArr'>
+        <div ngClass='{{ block.color }}' class="block-container" (click)="onBlockClick(block)"></div>
     </ng-container>
 </div>
 
