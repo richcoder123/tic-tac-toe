@@ -9,6 +9,11 @@ export class GridDisplayComponent implements OnInit {
 
 	playerWon = false;
 
+	colorAndPlayer = {
+		'green': 'You',
+		'red': 'Computer'
+	};
+
 	winningCombinations = [
 		[0, 1, 2],
 		[0, 3, 6],
@@ -49,6 +54,7 @@ export class GridDisplayComponent implements OnInit {
 		id: 8
 	}];
 
+	readonly centreAndCornerIndex = [0, 2, 6, 8, 4];
 
 	constructor() { }
 
@@ -58,18 +64,27 @@ export class GridDisplayComponent implements OnInit {
 	onBlockClick(selectedBlock) {
 
 		this.fillUserBlock(selectedBlock);
-
-		this.fillComputerBlock();
-
 		this.checkWinningCombination('green');
+		this.fillComputerBlock();
+		this.checkWinningCombination('red');
 
 	}
 
 	fillComputerBlock() {
-		for(let element of this.gridArr) {
-			if (element.color === '') {
-				element.color = 'red';
+		let flag = 0;
+		for (let index of this.centreAndCornerIndex) {
+			if (this.gridArr[index].color === '') {
+				this.gridArr[index].color = 'red';
+				flag++;
 				return;
+			}
+		}
+		if (flag === 0) {
+			for(let element of this.gridArr) {
+				if (element.color === '') {
+					element.color = 'red';
+					return;
+				}
 			}
 		}
 	}
@@ -85,7 +100,7 @@ export class GridDisplayComponent implements OnInit {
 
 			if (flag === 3) {
 				this.playerWon = true;
-				this.resetGame();
+				playerName = 
 			}
 			flag = 0;
 		});
