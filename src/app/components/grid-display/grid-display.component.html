@@ -5,6 +5,12 @@
     <li>Whosoever fills 3 blocks in a straight line with a single color first, will win.</li>
 </ol>
 
+<div class='blocks-container'>
+    <ng-container *ngFor='let block of gridArr'>
+        <div ngClass='{{ block.color }}' class="block-container" (click)="onBlockClick(block)"></div>
+    </ng-container>
+</div>
+
 <div  class= 'text-style' *ngIf='playerWon'>
     Congrats {{ playerName.player }}, you won. 
     <br>
@@ -12,10 +18,3 @@
     <br>
     <button class="button-style" (click)="resetGame()">New Game</button>
 </div>
-
-<div class='blocks-container'>
-    <ng-container *ngFor='let block of gridArr'>
-        <div ngClass='{{ block.color }}' class="block-container" (click)="onBlockClick(block)"></div>
-    </ng-container>
-</div>
-
