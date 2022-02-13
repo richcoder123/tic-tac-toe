@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GridUpdateComponent } from './components/grid-update/grid-update.component';
 
 const appRoutes: Routes = [
+  { path: '', component: GridDisplayComponent },
   { path: 'random-game', component: GridDisplayComponent },
   { path: 'against-aman', component: GridDisplayComponent }
 ];

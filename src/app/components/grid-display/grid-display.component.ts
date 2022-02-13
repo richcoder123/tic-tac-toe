@@ -9,10 +9,16 @@ export class GridDisplayComponent implements OnInit {
 
 	playerWon = false;
 
-	colorAndPlayer = {
-		'green': 'You',
-		'red': 'Computer'
-	};
+	colorAndPlayer = [
+		{
+			color: 'green',
+			player: 'player 1'
+		},
+		{
+			color: 'red',
+			player: 'computer'
+		}
+	];
 
 	winningCombinations = [
 		[0, 1, 2],
@@ -55,6 +61,7 @@ export class GridDisplayComponent implements OnInit {
 	}];
 
 	readonly centreAndCornerIndex = [0, 2, 6, 8, 4];
+	playerName: { color: string; player: string; };
 
 	constructor() { }
 
@@ -62,12 +69,12 @@ export class GridDisplayComponent implements OnInit {
 	}
 
 	onBlockClick(selectedBlock) {
-
-		this.fillUserBlock(selectedBlock);
-		this.checkWinningCombination('green');
-		this.fillComputerBlock();
-		this.checkWinningCombination('red');
-
+		if (!this.playerWon) {
+			this.fillUserBlock(selectedBlock);
+			this.checkWinningCombination('green');
+			this.fillComputerBlock();
+			this.checkWinningCombination('red');
+		}
 	}
 
 	fillComputerBlock() {
@@ -100,7 +107,11 @@ export class GridDisplayComponent implements OnInit {
 
 			if (flag === 3) {
 				this.playerWon = true;
-				playerName = 
+				this.playerName = this.colorAndPlayer.find(name => {
+					if (name.color === color) {
+						return name.player;
+					}
+				})
 			}
 			flag = 0;
 		});
@@ -114,6 +125,7 @@ export class GridDisplayComponent implements OnInit {
 		this.gridArr.forEach((block) => {
 			block.color = '';
 		});
+		this.playerWon = false;
 	}
 }
 
