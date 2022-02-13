@@ -1,12 +1,12 @@
 .blocks-container {
-    max-width: 630px;
+    max-width: 306px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .block-container {
-    min-width: 200px;
-    height: 200px;
+    min-width: 100px;
+    height: 100px;
     border: 1px solid maroon;
     cursor: pointer;
 }
