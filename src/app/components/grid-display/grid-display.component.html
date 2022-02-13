@@ -1,18 +1,20 @@
-<div class='grid-container'>
-    <div class='blocks-container'>
-        <ng-container *ngFor='let block of [].constructor(3)'>
-            <div class="block-container"></div>
-        </ng-container>
-    </div>
-    <div class='blocks-container'>
-        <ng-container *ngFor='let block of [].constructor(3)'>
-            <div class="block-container"></div>
-        </ng-container>
-    </div>
-    <div class='blocks-container'>
-        <ng-container *ngFor='let block of [].constructor(3)'>
-            <div class="block-container"></div>
-        </ng-container>
-    </div>
+<div class='text-style'>Let's play the classic game of tic tac toe.</div>
+<ol class='text-style' type='I'>
+    <li>Player starts the game by clicking on a block - it turns salmon.</li>
+    <li>Computer will then fill a block with blue color.</li>
+    <li>Whosoever fills 3 blocks in a straight line with a single color first, will win.</li>
+</ol>
 
+<div class='blocks-container'>
+    <ng-container *ngFor='let block of gridArr'>
+        <div ngClass='{{ block.color }}' class="block-container" (click)="onBlockClick(block)"></div>
+    </ng-container>
+</div>
+
+<div  class= 'text-style' *ngIf='playerWon'>
+    Congrats {{ playerName.player }}, you won. 
+    <br>
+    Click New Game to start a new game.
+    <br>
+    <button class="button-style" (click)="resetGame()">New Game</button>
 </div>
